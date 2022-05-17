@@ -1,0 +1,8 @@
+{
+  "name": "FacilitaTransporte",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:aggierosa/FacilitaTransporte.git",
+  "author": "Tiago <m.tiago@outlook.com.br>",
+  "license": "MIT"
+}
