@@ -1,8 +1,11 @@
 import { Request, Response } from "express"
-import createDriverService from "../services/drivers/createDriverService"
 import "express-async-errors"
 import { AppDataSource } from "../data-source"
 import Driver from "../models/Driver"
+
+import createDriverService from "../services/driver/createDriverService"
+import updateDriverService from "../services/driver/updateDriverService"
+import deleteDriverService from "../services/driver/deleteDriverService"
 
 export default class UserController {
     static async store(request: Request, response: Response) {
