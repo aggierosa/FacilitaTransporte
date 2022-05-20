@@ -1,30 +1,38 @@
-import { DataSource } from "typeorm"
-import "dotenv/config"
+import { DataSource } from "typeorm";
+import "dotenv/config";
 
-export const AppDataSource = 
-    process.env.NODE_ENV === "test"
+export const AppDataSource =
+  process.env.NODE_ENV === "test"
     ? new DataSource({
         type: "sqlite",
         database: ":memory:",
         entities: ["src/models/*.ts"],
-        synchronize: true
-    })
+        synchronize: true,
+      })
     : new DataSource({
         type: "postgres",
         host: "localhost",
-        url: process.env.DATABASE_URL,
+        port: Number(process.env.PORT) || 5432,
+        username: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+        database: process.env.POSTGRES_DB,
         synchronize: false,
         logging: true,
+        entities: ["src/models/*.ts"],
+        migrations: ["src/migrations/*.ts"],
+    })
+
         ssl:
-            process.env.NODE_ENV === "production"
+          process.env.NODE_ENV === "production"
             ? { rejectUnauthorized: false }
             : false,
         entities:
-            process.env.NODE_ENV === "production"
+          process.env.NODE_ENV === "production"
             ? ["dist/src/models/*.js"]
             : ["src/models/*.ts"],
         migrations:
-            process.env.NODE_ENV === "production"
+          process.env.NODE_ENV === "production"
             ? ["dist/src/migrations/*.js"]
-            : ["src/migrations/*.ts"]
-    })
+            : ["src/migrations/*.ts"],
+      });
+

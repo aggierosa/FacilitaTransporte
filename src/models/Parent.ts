@@ -1,14 +1,11 @@
-import Student from "./Student.ts"
-
 import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    OneToMany
   } from "typeorm";
   
-  @Entity("drivers")
-  class Driver {
+  @Entity("parents")
+  class Parent {
     @PrimaryGeneratedColumn("uuid")
     id: string;
   
@@ -17,12 +14,7 @@ import {
   
     @Column()
     telephone: string;
-
-
-    @OneToMany(type => Student, students => students.Driver)
-    Student: Student []
   
-
   }
   
-  export default Driver;
+  export default Parent;
