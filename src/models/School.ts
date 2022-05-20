@@ -13,7 +13,7 @@ import {
     name: string;
   
     @Column()
-    address: number;
+    address: string;
   
   }
   
