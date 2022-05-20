@@ -1,7 +1,9 @@
+import Student from "./Student";
 import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
+    OneToMany
   } from "typeorm";
   
   @Entity("drivers")
@@ -14,6 +16,9 @@ import {
   
     @Column()
     telephone: string;
+
+    @OneToMany(() => Student, (student) => student.driver, )
+    students!: Student[]
   }
   
   export default Driver;

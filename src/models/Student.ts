@@ -25,14 +25,20 @@ class Student {
   @Column()
   departure_time: string;
 
-  @ManyToOne(() => Parent)
-  parent_id: Parent["id"];
+  @ManyToOne(() => Parent, (parent) => parent.students, {
+    eager: true
+  })
+  parent!: Parent;
 
-  @ManyToOne(() => School)
-  school_id: School["id"];
+  @ManyToOne(() => School, (school) => school.students, {
+    eager: true
+  })
+  school!: Parent;
 
-  @ManyToOne(() => Driver)
-  driver_id: Driver["id"];
+  @ManyToOne(() => Driver, (driver) => driver.students, {
+    eager: true
+  })
+  driver!: Parent;
 }
 
 export default Student;
