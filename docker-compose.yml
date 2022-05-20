@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  capstone:
+    container_name: capstone
+    image: capstonenode
+    build: .
+    ports:
+      - 3333:3333
+    depends_on:
+      - capstone_database
+    environment:
+      - DB_USERNAME=grupotreze
+      - DB_HOST=capstone_database
+      - DB=facilita_transporte
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+  capstone_database:
+    container_name: capstone_database
+    image: postgres:12
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=grupotreze
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=facilita_transporte
