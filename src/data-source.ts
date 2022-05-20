@@ -12,9 +12,16 @@ export const AppDataSource =
     : new DataSource({
         type: "postgres",
         host: "localhost",
-        url: process.env.DATABASE_URL,
+        port: Number(process.env.PORT) || 5432,
+        username: process.env.POSTGRES_USER,
+        password: process.env.POSTGRES_PASSWORD,
+        database: process.env.POSTGRES_DB,
         synchronize: false,
         logging: true,
+        entities: ["src/models/*.ts"],
+        migrations: ["src/migrations/*.ts"],
+    })
+
         ssl:
           process.env.NODE_ENV === "production"
             ? { rejectUnauthorized: false }
@@ -28,3 +35,4 @@ export const AppDataSource =
             ? ["dist/src/migrations/*.js"]
             : ["src/migrations/*.ts"],
       });
+
