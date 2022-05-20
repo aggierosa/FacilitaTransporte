@@ -1,7 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
-import Parent from "./Parent.ts";
-import School from "./School.ts";
-import Driver from "./Driver.ts";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne
+} from "typeorm";
+import Parent from "./Parent";
+import School from "./School";
+import Driver from "./Driver";
 
 @Entity("students")
 class Student {
@@ -20,14 +25,14 @@ class Student {
   @Column()
   departure_time: string;
 
-  @OneToOne(() => Parent)
-  parent_id: Parent.id;
+  @ManyToOne(() => Parent)
+  parent_id: Parent["id"];
 
-  @OneToOne(() => School)
-  school_id: School.id;
+  @ManyToOne(() => School)
+  school_id: School["id"];
 
-  @OneToOne(() => Driver)
-  driver_id: Driver.id;
+  @ManyToOne(() => Driver)
+  driver_id: Driver["id"];
 }
 
 export default Student;

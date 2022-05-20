@@ -14,7 +14,6 @@ import {
   
     @Column()
     telephone: string;
-  
   }
   
   export default Parent;

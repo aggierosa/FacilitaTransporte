@@ -14,7 +14,6 @@ import {
   
     @Column()
     address: string;
-  
   }
   
   export default School;

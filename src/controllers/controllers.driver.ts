@@ -1,43 +1,43 @@
-import { Request, Response } from "express"
-import "express-async-errors"
-import { AppDataSource } from "../data-source"
-import Driver from "../models/Driver"
+// import { Request, Response } from "express"
+// import "express-async-errors"
+// import { AppDataSource } from "../data-source"
+// import Driver from "../models/Driver"
 
-import createDriverService from "../services/driver/createDriverService"
-import updateDriverService from "../services/driver/updateDriverService"
-import deleteDriverService from "../services/driver/deleteDriverService"
+// import createDriverService from "../services/driver/createDriverService"
+// import updateDriverService from "../services/driver/updateDriverService"
+// import deleteDriverService from "../services/driver/deleteDriverService"
 
-export default class UserController {
-    static async store(request: Request, response: Response) {
-      const { name, telephone } = request.body
+// export default class UserController {
+//     static async store(request: Request, response: Response) {
+//       const { name, telephone } = request.body
   
-      const newDriver = await createDriverService({name, telephone})
+//       // const newDriver = await createDriverService({name, telephone})
   
-      return response.status(201).json(newDriver)
-    }
+//       // return response.status(201).json(newDriver)
+//     }
   
-    static async index(request: Request, response: Response) {
-      const driverRepository = AppDataSource.getRepository(Driver);
+//     static async index(request: Request, response: Response) {
+//       const driverRepository = AppDataSource.getRepository(Driver);
   
-      const drivers = await driverRepository.find();
+//       const drivers = await driverRepository.find();
   
-      return response.json(drivers);
-    }
+//       return response.json(drivers);
+//     }
   
-    static async update(request: Request, response: Response) {
-      const { driverId } = request.params;
-      const { name, telephone } = request.body;
+//     static async update(request: Request, response: Response) {
+//       const { driverId } = request.params;
+//       const { name, telephone } = request.body;
   
-      const updatedDriver = await updateDriverService({driverId, name, telephone});
+//       // const updatedDriver = await updateDriverService({driverId, name, telephone});
   
-      return response.status(201).json(updatedDriver);
-    }
+//       // return response.status(201).json(updatedDriver);
+//     }
   
-    static async delete(request: Request, response: Response) {
-      const { driverId } = request.params;
+//     static async delete(request: Request, response: Response) {
+//       const { driverId } = request.params;
   
-      const deleteDriver = await deleteDriverService(driverId);
+//       // const deleteDriver = await deleteDriverService(driverId);
   
-      return response.status(204).json();
-    }
-  }
+//       // return response.status(204).json();
+//     }
+//   }
