@@ -1,7 +1,7 @@
 {
   "name": "FacilitaTransporte",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "src/app.ts",
   "repository": "git@github.com:aggierosa/FacilitaTransporte.git",
   "author": "Tiago <m.tiago@outlook.com.br>",
   "license": "MIT",
@@ -13,6 +13,13 @@
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.6",
     "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "dev": "ts-node-dev --inspect --ignore-watch node_modules src/app.ts",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "start": "node dist/src/server.js",
+    "build": "tsc",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
