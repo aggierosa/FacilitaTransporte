@@ -1,4 +1,4 @@
-import IDriver from "../../models/Driver"
+import { IDriver } from "../../interfaces/interface.driver"
 import { AppDataSource } from "../../data-source"
 import AppError from "../../errors/AppError"
 import Driver from "../../models/Driver"
