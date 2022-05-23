@@ -1,5 +1,4 @@
-import Student from "./Student.ts"
-
+import Student from "./Student";
 import {
     Entity,
     Column,
@@ -18,11 +17,8 @@ import {
     @Column()
     telephone: string;
 
-
-    @OneToMany(type => Student, students => students.Driver)
-    Student: Student []
-  
-
+    @OneToMany(() => Student, (student) => student.driver, )
+    students!: Student[]
   }
   
   export default Driver;
