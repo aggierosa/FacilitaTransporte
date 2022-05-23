@@ -25,7 +25,8 @@ Visão geral do projeto, um pouco das tecnologias usadas.
 - [UUID](https://www.npmjs.com/package/uuid)
 
 A URL base da aplicação:
-http://suaapi.com/v1
+
+https://facilita-transporte.herokuapp.com
 
 ---
 
