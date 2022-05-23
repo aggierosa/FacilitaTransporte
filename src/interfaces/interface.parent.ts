@@ -1,5 +1,4 @@
-export interface ISchool {
-    id: string
+export interface IParent {
     name: string
     telephone: string
     student_id: string
