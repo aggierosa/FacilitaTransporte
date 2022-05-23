@@ -39,12 +39,25 @@ export default class StudentController {
   }
   static async update(request: Request, response: Response) {
     const { studentId } = request.params;
-    const { name, telephone } = request.body;
+    const {
+      name,
+      address,
+      entry_time,
+      departure_time,
+      parents_id,
+      school_id,
+      drivers_id,
+    } = request.body;
 
     const updatedStudent = await updateStudentService({
       studentId,
       name,
-      telephone,
+      address,
+      entry_time,
+      departure_time,
+      parents_id,
+      school_id,
+      drivers_id,
     });
 
     return response.status(201).json(updatedStudent);
