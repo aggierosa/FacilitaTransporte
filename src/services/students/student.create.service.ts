@@ -7,7 +7,7 @@ interface StudentDataParams {
   address: string;
   entry_time: string;
   departure_time: string;
-  parent: string;
+  parent_id: string;
   school?: string;
   driver?: string;
 }
@@ -17,10 +17,10 @@ export default class CreateStudentService {
     const studentRepository = AppDataSource.getRepository(Student);
 
     const parentRepository = AppDataSource.getRepository(Parent);
-    const { name, address, entry_time, departure_time } = data;
+    const { name, address, entry_time, departure_time, parent_id } = data;
 
     const parent = parentRepository.findOneOrFail({
-      id: data.parent,
+      id: parent_id,
     });
 
     const student = studentRepository.create({
