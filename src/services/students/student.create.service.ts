@@ -1,38 +1,36 @@
 import Student from "../../models/Student";
 import Parent from "../../models/Parent";
 import { AppDataSource } from "../../data-source";
+import { IStudent } from "../../interfaces/interface.student";
+import AppError from "../../errors/AppError";
 
-interface StudentDataParams {
-  name: string;
-  address: string;
-  entry_time: string;
-  departure_time: string;
-  parent: string;
-  school?: string;
-  driver?: string;
-}
+const createStudentService = async (
+  {name,
+  address,
+  entryTime,
+  departureTime,
+  parentId}: IStudent
+) => {
+  const studentRepository = AppDataSource.getRepository(Student);
 
-export default class CreateStudentService {
-  public async execute(data: StudentDataParams): Promise<Student> {
-    const studentRepository = AppDataSource.getRepository(Student);
+  const parentRepository = AppDataSource.getRepository(Parent)
 
-    const parentRepository = AppDataSource.getRepository(Parent);
-    const { name, address, entry_time, departure_time } = data;
+  const findParent = parentRepository.findOne({where: {id === parentId}})
 
-    const parent = parentRepository.findOneOrFail({
-      id: data.parent,
-    });
+  const students = studentRepository.findOne({where: {name === name}});
 
-    const student = studentRepository.create({
-      name,
-      address,
-      entry_time,
-      departure_time,
-      parent: parent,
-    });
+  const existentStudent = students.find(student => student.name === name);
 
-    await studentRepository.save(student);
-
-    return student;
+  if (existentStudent) {
+    throw new AppError("Student already registered", 409);
   }
-}
+
+  const createStudent = studentRepository.create({
+    name, address, entryTime, departureTime, parent: findParent
+  });
+  await studentRepository.save(createStudent);
+
+  return student;
+};
+
+export default createStudentService;
