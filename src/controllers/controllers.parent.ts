@@ -7,7 +7,7 @@ import createParentService from "../services/parents/parent.create.service"
 import updateParentService from "../services/parents/parent.update.service"
 import deleteParentService from "../services/parents/parent.delete.service"
 
-export default class UserController {
+export default class ParentController {
     static async store(request: Request, response: Response) {
       const { name, telephone } = request.body
   
