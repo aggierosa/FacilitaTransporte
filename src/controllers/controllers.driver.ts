@@ -7,7 +7,7 @@ import createDriverService from "../services/drivers/driver.create.service"
 import updateDriverService from "../services/drivers/driver.update.service"
 import deleteDriverService from "../services/drivers/driver.delete.service"
 
-export default class UserController {
+export default class DriverController {
     static async store(request: Request, response: Response) {
       const { name, telephone } = request.body
   
