@@ -1,9 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne
-} from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import Parent from "./Parent";
 import School from "./School";
 import Driver from "./Driver";
@@ -20,25 +15,25 @@ class Student {
   address: string;
 
   @Column()
-  entry_time: string;
+  entryTime: string;
 
   @Column()
-  departure_time: string;
+  departureTime: string;
 
   @ManyToOne(() => Parent, (parent) => parent.students, {
-    eager: true
+    eager: true,
   })
-  parent!: Parent;
+  parent: Parent;
 
   @ManyToOne(() => School, (school) => school.students, {
-    eager: true
+    eager: true,
   })
-  school!: Parent;
+  school?: School;
 
   @ManyToOne(() => Driver, (driver) => driver.students, {
-    eager: true
+    eager: true,
   })
-  driver!: Parent;
+  driver?: Driver;
 }
 
 export default Student;

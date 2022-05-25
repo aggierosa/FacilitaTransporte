@@ -4,4 +4,6 @@ export interface IStudent {
     entryTime: string
     departureTime: string
     parentId: string
+    schoolId: string
+    driverId: string
 }
