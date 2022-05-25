@@ -1,14 +1,9 @@
 import Student from "../../models/Student";
-import { DeleteResult } from "typeorm";
+import AppError from "../../errors/AppError";
 import { AppDataSource } from "../../data-source";
 
-interface UserDataParams {
-  id: string;
-}
-
-export default class DeleteStudentService {
-  public async execute({ id }: UserDataParams): Promise<DeleteResult> {
-    const studentRepository = AppDataSource.getRepository(Student);
+ const deleteStudentService = async (id: string) => {
+     const studentRepository = AppDataSource.getRepository(Student);
 
     const student = await studentRepository.findOne({
       where: {
@@ -17,9 +12,12 @@ export default class DeleteStudentService {
     });
 
     if (!student) {
-      throw new Error("User not found");
+      throw new AppError(`We could not find a student under the id ${id}`);
     }
 
-    return await studentRepository.delete(id);
-  }
-}
+    await studentRepository.delete(id);
+
+    return true
+ }
+
+export default deleteStudentService
