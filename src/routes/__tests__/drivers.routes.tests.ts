@@ -28,7 +28,7 @@ describe("Create a driver - Route", () => {
 
     console.log("Hello")
     
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(201);
 
     expect(response.body).toHaveProperty("id");
   });
