@@ -4,10 +4,10 @@ import ParentController from "../controllers/controllers.parent";
 
 const parentRouter = Router();
 
-parentRouter.post("/parents", ParentController.store);
-parentRouter.get("/parents", ParentController.index);
-parentRouter.get("/parents/:parents_id", ParentController.index);
-parentRouter.patch("/parents/:parents_id", ParentController.update);
-parentRouter.delete("/parents/:parents_id", ParentController.delete);
+parentRouter.post("/", ParentController.store);
+parentRouter.get("/", ParentController.index);
+parentRouter.get("/:parents_id", ParentController.index);
+parentRouter.patch("/:parents_id", ParentController.update);
+parentRouter.delete("/:parents_id", ParentController.delete);
 
 export default parentRouter;

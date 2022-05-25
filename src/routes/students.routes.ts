@@ -4,10 +4,10 @@ import StudentController from "../controllers/controller.student";
 
 const studentsRouter = Router();
 
-studentsRouter.post("/students", StudentController.store);
-studentsRouter.get("/students", StudentController.index);
-studentsRouter.get("/students/:student_id", StudentController.index);
-studentsRouter.patch("/students/:student_id", StudentController.update);
-studentsRouter.delete("/students/:student_id", StudentController.delete);
+studentsRouter.post("/", StudentController.store);
+studentsRouter.get("/", StudentController.index);
+studentsRouter.get("/:student_id", StudentController.index);
+studentsRouter.patch("/:student_id", StudentController.update);
+studentsRouter.delete("/:student_id", StudentController.delete);
 
 export default studentsRouter;
