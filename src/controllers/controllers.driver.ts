@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import "express-async-errors"
 import { AppDataSource } from "../data-source"
-import Driver from "../models/Driver"
+import Driver from "../entities/Driver"
 
 import createDriverService from "../services/drivers/driver.create.service"
 import updateDriverService from "../services/drivers/driver.update.service"

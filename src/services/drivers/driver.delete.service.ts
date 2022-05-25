@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source"
-import Driver from "../../models/Driver"
+import Driver from "../../entities/Driver"
 import AppError from "../../errors/AppError";
 
 const deleteDriverService = async (name: string) => {
