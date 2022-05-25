@@ -1,7 +1,7 @@
 import { Router } from "express";
 import driverRouter from "./drivers.routes";
 import parentsRouter from "./parents.routes";
-import schoolRouter from "./school.routes";
+import schoolRouter from "./schools.routes";
 import studentsRouter from "./students.routes";
 
 const routes = Router();
