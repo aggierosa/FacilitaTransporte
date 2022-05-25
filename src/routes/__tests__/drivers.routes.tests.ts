@@ -2,7 +2,6 @@ import { DataSource } from "typeorm";
 import { AppDataSource } from "../../data-source";
 import request from "supertest";
 import app from "../../app";
-import createDriverService from "../../services/drivers/driver.create.service"
 
 describe("Create a driver - Route", () => {
   let connection: DataSource;
