@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import "express-async-errors";
 import { AppDataSource } from "../data-source";
-import { Student } from "../entities";
+import Student from "../models/Student"
 
 import CreateStudentService from "../services/students/student.create.service";
 import UpdateStudentService from "../services/students/student.update.service";
@@ -61,7 +61,7 @@ export default class StudentController {
       driverId,
     );
 
-    return response.status(201).json(updatedStudent);
+    return response.status(200).json(updatedStudent);
   }
 
   static async delete(request: Request, response: Response) {
