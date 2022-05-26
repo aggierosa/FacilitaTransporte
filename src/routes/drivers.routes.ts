@@ -1,10 +1,12 @@
 import { Router } from "express";
 
 import DriverController from "../controllers/controllers.driver";
+import { validateParentDriver } from "../middlewares";
+import { driverSchema } from "../validations";
 
 const driverRouter = Router();
 
-driverRouter.post("/", DriverController.store);
+driverRouter.post("/", validateParentDriver(driverSchema),DriverController.store);
 driverRouter.get("/", DriverController.index);
 driverRouter.get("/:driver_id", DriverController.index);
 driverRouter.patch("/:driver_id", DriverController.update);
