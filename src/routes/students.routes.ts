@@ -8,7 +8,7 @@ const studentsRouter = Router();
 
 studentsRouter.post("/", validateStudents(studentSchema),StudentController.store);
 studentsRouter.get("/", StudentController.index);
-studentsRouter.patch("/:student_id", StudentController.update);
-studentsRouter.delete("/:student_id", StudentController.delete);
+studentsRouter.patch("/:studentId", StudentController.update);
+studentsRouter.delete("/:studentId", StudentController.delete);
 
 export default studentsRouter;

@@ -8,7 +8,7 @@ const schoolRouter = Router();
 
 schoolRouter.post("/", validateSchool(schoolSchema),SchoolController.store);
 schoolRouter.get("/", SchoolController.index);
-schoolRouter.patch("/:school_id", SchoolController.update);
-schoolRouter.delete("/:school_id", SchoolController.delete);
+schoolRouter.patch("/:schoolId", SchoolController.update);
+schoolRouter.delete("/:schoolId", SchoolController.delete);
 
 export default schoolRouter;
