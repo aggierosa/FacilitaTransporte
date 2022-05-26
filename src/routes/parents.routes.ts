@@ -6,7 +6,6 @@ const parentRouter = Router();
 
 parentRouter.post("/", ParentController.store);
 parentRouter.get("/", ParentController.index);
-parentRouter.get("/:parents_id", ParentController.index);
 parentRouter.patch("/:parents_id", ParentController.update);
 parentRouter.delete("/:parents_id", ParentController.delete);
 
