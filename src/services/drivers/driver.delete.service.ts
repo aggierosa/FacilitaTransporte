@@ -1,16 +1,16 @@
 import { AppDataSource } from "../../data-source"
-import Driver from "../../entities/Driver"
 import AppError from "../../errors/AppError";
+import Driver from "../../models/Driver"
 
-const deleteDriverService = async (name: string) => {
+const deleteDriverService = async (driverId: string) => {
     const driverRepository = AppDataSource.getRepository(Driver)
 
     const drivers = await driverRepository.find()
 
-    const foundDriver = drivers.find(driver => driver.name === name)
+    const foundDriver = drivers.find(driver => driver.id === driverId)
 
     if (!foundDriver) {
-        throw new AppError(`We could not find a driver under the name ${name}`)
+        throw new AppError(`We could not find a driver under the id ${driverId}`)
     }
 
     await driverRepository.delete(foundDriver!.id)

@@ -1,7 +1,7 @@
 import { IDriver } from "../../interfaces/interface.driver"
 import { AppDataSource } from "../../data-source"
 import AppError from "../../errors/AppError"
-import Driver from "../../entities/Driver"
+import Driver from "../../models/Driver"
 
 const createDriverService = async ({name, telephone}: IDriver) => {
     const driverRepository = AppDataSource.getRepository(Driver)

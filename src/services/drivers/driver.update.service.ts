@@ -1,6 +1,6 @@
 import { AppDataSource } from "../../data-source";
 import AppError from "../../errors/AppError";
-import Driver from "../../entities/Driver";
+import Driver from "../../models/Driver";
 
 const updateDriverService = async (driverId: string, name: string, telephone: string) => {
     const driverRepository = AppDataSource.getRepository(Driver)

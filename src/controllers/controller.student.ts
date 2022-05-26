@@ -3,29 +3,30 @@ import "express-async-errors";
 import { AppDataSource } from "../data-source";
 import { Student } from "../entities";
 
-import createStudentService from "../services/students/createStudent.service";
-import updateStudentService from "../services/students/updateStudent.service";
-import deleteStudentService from "../services/students/deleteStudent.service";
+import CreateStudentService from "../services/students/student.create.service";
+import UpdateStudentService from "../services/students/student.update.service";
+import DeleteStudentService from "../services/students/student.delete.service";
 
 export default class StudentController {
   static async store(request: Request, response: Response) {
     const {
       name,
       address,
-      entry_time,
-      departure_time,
-      parents_id,
-      school_id,
-      drivers_id,
+      entryTime,
+      departureTime,
+      parentId,
+      schoolId,
+      driverId,
     } = request.body;
-    const newStudent = await createStudentService({
+
+    const newStudent = await CreateStudentService({
       name,
       address,
-      entry_time,
-      departure_time,
-      parents_id,
-      school_id,
-      drivers_id,
+      entryTime,
+      departureTime,
+      parentId,
+      schoolId,
+      driverId,
     });
     return response.status(201).json(newStudent);
   }
@@ -42,23 +43,23 @@ export default class StudentController {
     const {
       name,
       address,
-      entry_time,
-      departure_time,
-      parents_id,
-      school_id,
-      drivers_id,
+      entryTime,
+      departureTime,
+      parentId,
+      schoolId,
+      driverId,
     } = request.body;
 
-    const updatedStudent = await updateStudentService({
+    const updatedStudent = await UpdateStudentService(
       studentId,
       name,
       address,
-      entry_time,
-      departure_time,
-      parents_id,
-      school_id,
-      drivers_id,
-    });
+      entryTime,
+      departureTime,
+      parentId,
+      schoolId,
+      driverId,
+    );
 
     return response.status(201).json(updatedStudent);
   }
@@ -66,7 +67,7 @@ export default class StudentController {
   static async delete(request: Request, response: Response) {
     const { studentId } = request.params;
 
-    const deleteStudent = await deleteStudentService(studentId);
+    const deleteStudent = await DeleteStudentService(studentId);
 
     return response.status(204).json();
   }
