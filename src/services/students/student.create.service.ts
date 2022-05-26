@@ -1,35 +1,61 @@
 import Student from "../../models/Student";
 import Parent from "../../models/Parent";
+import Driver from "../../models/Driver"
+import School from "../../models/School";
 import { AppDataSource } from "../../data-source";
 import { IStudent } from "../../interfaces/interface.student";
 import AppError from "../../errors/AppError";
 
-const createStudentService = async ({name,address,entryTime,departureTime,parentId}: IStudent) => {
+const createStudentService = async (
+  {name,
+  address,
+  entryTime,
+  departureTime,
+  parentId,
+  schoolId,
+  driverId
+  }: IStudent) => {
   
-  const studentRepository = AppDataSource.getRepository(Student);
+    const studentRepository = AppDataSource.getRepository(Student);
 
-  const students = await studentRepository.find();
+    const parentRepository = AppDataSource.getRepository(Parent)
 
-  const existentStudent = students.find(student => student.name === name);
+    const schoolRepository = AppDataSource.getRepository(School)
 
-  if (existentStudent) {
-    throw new AppError("Student already registered", 409);
-  }
+    const driverRepository = AppDataSource.getRepository(Driver)
 
-  const parentRepository = AppDataSource.getRepository(Parent)
+    const parent = await parentRepository.findOneBy({id: parentId}) 
 
-  const parents = await parentRepository.findOneBy({id: parentId}) 
+    const school = await schoolRepository.findOneBy({id: schoolId}) 
+    
+    const driver = await driverRepository.findOneBy({id: driverId})
 
-  if (!parents) {
-    throw new AppError(`We couldn't find a parent under the id ${parentId}`, 409);
-  }
+    const foundStudent = await studentRepository.findOneBy({name: name}) 
+
+    if (foundStudent) {
+      throw new AppError(`There is already a student under the name ${name}`);
+    }
+
+    if (!parent) {
+      throw new AppError(`We could not find a parent under the id ${parentId}`);
+    }
+
+    if (!school) {
+      throw new AppError(`We could not find a school under the id ${schoolId}`);
+    }
+
+    if (!driver) {
+      throw new AppError(`We could not find a driver under the id ${driverId}`);
+    }
 
   const student = new Student()
   student.name = name
   student.address = address
   student.entryTime = entryTime
   student.departureTime = departureTime
-  student.parent = parents
+  student.parent = parent
+  student.school = school
+  student.driver = driver
     
   studentRepository.create(student)
   await studentRepository.save(student);
