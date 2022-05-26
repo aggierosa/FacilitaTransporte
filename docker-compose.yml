@@ -9,18 +9,18 @@ services:
       - 3333:3333
 
     environment:
-      - DATABASE_URL=postgres://postgres:password@capstone_database:5432/facilita_transporte
-      - DB_USERNAME=postgres
+      - DATABASE_URL=postgres://grupotreze:postgres@capstone_database:5432/facilita_transporte
+      - DB_USERNAME=grupotreze
       - DB_HOST=capstone_database
       - DB=facilita_transporte
-      - DB_PASSWORD=password
+      - DB_PASSWORD=postgres
       - DB_PORT=5432
   capstone_database:
     container_name: capstone_database
     image: postgres:12
     ports:
-      - 5431:5432
+      - 5432:5432
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=grupotreze
+      - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=facilita_transporte
