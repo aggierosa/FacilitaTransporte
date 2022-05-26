@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import "express-async-errors";
 import { AppDataSource } from "../data-source";
-import Student from "../models/Student";
+import { Student } from "../entities";
 
 import CreateStudentService from "../services/students/student.create.service";
 import UpdateStudentService from "../services/students/student.update.service";
