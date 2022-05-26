@@ -21,7 +21,7 @@ export default class ParentController {
   
       const parents = await parentRepository.find();
   
-      return response.json(parents);
+      return response.status(200).json(parents);
     }
   
     static async update(request: Request, response: Response) {

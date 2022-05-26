@@ -61,7 +61,7 @@ export default class StudentController {
       driverId,
     );
 
-    return response.status(201).json(updatedStudent);
+    return response.status(200).json(updatedStudent);
   }
 
   static async delete(request: Request, response: Response) {

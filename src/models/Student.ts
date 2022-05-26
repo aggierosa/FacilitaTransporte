@@ -28,12 +28,12 @@ class Student {
   @ManyToOne(() => School, (school) => school.students, {
     eager: true,
   })
-  school?: School;
+  school: School;
 
   @ManyToOne(() => Driver, (driver) => driver.students, {
     eager: true,
   })
-  driver?: Driver;
+  driver: Driver;
 }
 
 export default Student;
