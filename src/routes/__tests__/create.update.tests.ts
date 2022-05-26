@@ -120,8 +120,6 @@ describe("Testing success - Routes", () => {
     expect(response.body).toHaveProperty("map");
   });
 
-
-
   test("Should be able to delete school", async () => {
     
     const response = await request(app).delete(`/school/${schoolData.id}`);
