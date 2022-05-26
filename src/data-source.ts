@@ -11,7 +11,6 @@ export const AppDataSource =
   })
     : new DataSource({
         type: "postgres",
-        host: "localhost",
         url: process.env.DATABASE_URL,
         synchronize: false,
         logging: true,
