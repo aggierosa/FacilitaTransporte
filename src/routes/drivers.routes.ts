@@ -12,3 +12,4 @@ driverRouter.patch("/:driver_id", DriverController.update);
 driverRouter.delete("/:driver_id", DriverController.delete);
 
 export default driverRouter;
+
