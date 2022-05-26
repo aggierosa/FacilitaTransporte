@@ -3,15 +3,14 @@ import "dotenv/config";
 
 export const AppDataSource =
   process.env.NODE_ENV === "test"
-    ? new DataSource({
-        type: "sqlite",
-        database: ":memory:",
-        entities: ["src/models/*.ts"],
-        synchronize: true,
-      })
+  ? new DataSource({
+    type: "sqlite",
+    database: ":memory:",
+    entities: ["src/models/*.ts"],
+    synchronize: true,
+  })
     : new DataSource({
         type: "postgres",
-        host: "localhost",
         url: process.env.DATABASE_URL,
         synchronize: false,
         logging: true,

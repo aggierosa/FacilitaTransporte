@@ -7,9 +7,9 @@ services:
     build: .
     ports:
       - 3333:3333
-    depends_on:
-      - capstone_database
+
     environment:
+      - DATABASE_URL=postgres://grupotreze:postgres@capstone_database:5432/facilita_transporte
       - DB_USERNAME=grupotreze
       - DB_HOST=capstone_database
       - DB=facilita_transporte
