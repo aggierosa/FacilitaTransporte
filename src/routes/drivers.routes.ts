@@ -8,8 +8,8 @@ const driverRouter = Router();
 
 driverRouter.post("/", validateParentDriver(driverSchema),DriverController.store);
 driverRouter.get("/", DriverController.index);
-driverRouter.patch("/:driver_id", DriverController.update);
-driverRouter.delete("/:driver_id", DriverController.delete);
+driverRouter.patch("/:driverId", DriverController.update);
+driverRouter.delete("/:driverId", DriverController.delete);
 
 export default driverRouter;
 
