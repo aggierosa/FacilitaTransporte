@@ -9,8 +9,8 @@ import AppError from "../../errors/AppError";
 const createStudentService = async (
   {name,
   address,
-  entryTime,
-  departureTime,
+  entry_time,
+  departure_time,
   parentId,
   schoolId,
   driverId
@@ -51,8 +51,8 @@ const createStudentService = async (
   const student = new Student()
   student.name = name
   student.address = address
-  student.entryTime = entryTime
-  student.departureTime = departureTime
+  student.entry_time = entry_time
+  student.departure_time = departure_time
   student.parent = parent
   student.school = school
   student.driver = driver

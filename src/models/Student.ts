@@ -15,10 +15,10 @@ class Student {
   address: string;
 
   @Column()
-  entryTime: string;
+  entry_time: string;
 
   @Column()
-  departureTime: string;
+  departure_time: string;
 
   @ManyToOne(() => Parent, (parent) => parent.students, {
     eager: true,

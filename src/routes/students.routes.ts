@@ -4,11 +4,11 @@ import StudentController from "../controllers/controller.student";
 import { validateStudents } from "../middlewares";
 import { studentSchema } from "../validations";
 
-const studentsRouter = Router();
+const studentRouter = Router();
 
-studentsRouter.post("/", validateStudents(studentSchema),StudentController.store);
-studentsRouter.get("/", StudentController.index);
-studentsRouter.patch("/:studentId", StudentController.update);
-studentsRouter.delete("/:studentId", StudentController.delete);
+studentRouter.post("/", validateStudents(studentSchema),StudentController.store);
+studentRouter.get("/", StudentController.index);
+studentRouter.patch("/:studentId", StudentController.update);
+studentRouter.delete("/:studentId", StudentController.delete);
 
-export default studentsRouter;
+export default studentRouter;

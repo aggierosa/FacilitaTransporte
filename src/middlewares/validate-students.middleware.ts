@@ -9,9 +9,9 @@ export const validateStudents = (schema: yup.ObjectSchema<any>) => {
             err.adress;
             err.entry_time;
             err.departure_time;
-            err.parents_id;
-            err.school_id;
-            err.drivers_id;
+            err.parentId;
+            err.schoolId;
+            err.driverId;
         });
 
     next();

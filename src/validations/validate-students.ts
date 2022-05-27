@@ -5,7 +5,7 @@ export const studentSchema = yup.object().shape({
     adress: yup.string().max(128).required(),
     entry_time: yup.string().max(20),
     departure_time: yup.string().max(20),
-    parents_id: yup.string().required(),
-    school_id: yup.string().required(),
-    drivers_id: yup.string().required(),
+    parentId: yup.string().required(),
+    schoolId: yup.string().required(),
+    driverId: yup.string().required(),
 });

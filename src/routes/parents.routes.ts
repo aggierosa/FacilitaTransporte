@@ -8,7 +8,7 @@ const parentRouter = Router();
 
 parentRouter.post("/", validateParentDriver(parentSchema),ParentController.store);
 parentRouter.get("/", ParentController.index);
-parentRouter.patch("/:parentsId", ParentController.update);
-parentRouter.delete("/:parentsId", ParentController.delete);
+parentRouter.patch("/:parentId", ParentController.update);
+parentRouter.delete("/:parentId", ParentController.delete);
 
 export default parentRouter;
